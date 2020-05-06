@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.6.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>cn.linuxcrypt.fish.tank</groupId>
+	<artifactId>controller</artifactId>
+	<version>0.0.1</version>
+	<name>controller</name>
+	<description>Fish tank controller</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <common-mqtt.version>1.0.1</common-mqtt.version>
+        <common-utils.version>1.0.17</common-utils.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+            <version>1.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-stream</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-mqtt</artifactId>
+            <version>5.2.6.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.linuxcrypt</groupId>
+            <artifactId>common-utils</artifactId>
+            <version>${common-utils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.linuxcrypt</groupId>
+            <artifactId>common-mqtt</artifactId>
+            <version>${common-mqtt.version}</version>
+        </dependency>
+
+    </dependencies>
+
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                    <mainClass>cn.linuxcrypt.ControllerApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+	</build>
+    <repositories>
+        <repository>
+            <id>LinuxcryptPublic</id>
+            <layout>default</layout>
+            <url>http://nexus.linuxcrypt.cn/repository/maven-public/</url>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>LinuxcryptRelease</id>
+            <url>http://nexus.linuxcrypt.cn/repository/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>LinuxcrypSnapshots</id>
+            <url>http://nexus.linuxcrypt.cn/repository/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>
