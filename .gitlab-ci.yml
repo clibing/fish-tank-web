@@ -1,0 +1,36 @@
+# 调试开启
+#before_script:
+#  - pwd
+#  - env
+
+cache:
+  key: $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA
+  paths:
+    - target/*.jar
+    - docker.env
+    - vue-admin-template/dist
+
+stages:
+  - build
+  - docker
+
+build:
+  image: clibing/alpine-build:x86_64-1.1
+  stage: build
+  script:
+    - bash ci/build.sh -e www -p .
+  tags:
+    - proxmox
+  when: manual
+#  only:
+#    - /^((?!master).)*$/
+
+docker:
+  image: clibing/alpine-docker:x86_64-latest
+  stage: docker
+  script:
+    - source docker.env
+    - bash ci/docker.sh -e www -p .
+  tags:
+    - proxmox
+  when: manual

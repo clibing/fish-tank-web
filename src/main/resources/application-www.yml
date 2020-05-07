@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+common:
+  auth:
+    password: E1#Bt!@7&IL6jF0$WaB$azmzvbZeo4ol7cUv6seC$0XDgD16dg%0wBsuhJC!Z%3Y
+spring:
+  thymeleaf:
+    cache: true

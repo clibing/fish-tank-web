@@ -1,4 +1,23 @@
 server:
   port: 8080
+common:
+  mqtt:
+    hostUrls:
+      - ssl://clibing.com:8883
+    clientId: ${spring.application.name}${random.int}
+    ssl: true
+    root-ca: /root-cacert.pem
+    client-ca: /client-cert.pem
+    client-key: /client.key
 
-
+  auth:
+    username: admin
+    # password: E1#Bt!@7&IL6jF0$WaB$azmzvbZeo4ol7cUv6seC$0XDgD16dg%0wBsuhJC!Z%3Y
+    password: 123456
+spring:
+  application:
+    name: fish-tank-web
+  thymeleaf:
+    cache: false
+  profiles:
+    active: www
