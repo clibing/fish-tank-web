@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <common-mqtt.version>1.0.1</common-mqtt.version>
+        <common-mqtt.version>1.0.2</common-mqtt.version>
         <common-utils.version>1.0.17</common-utils.version>
 	</properties>
 
